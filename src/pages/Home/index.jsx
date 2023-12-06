@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Wrapper, ButtonContainer, Button } from "./style";
 import { Circle } from "../../components";
 
