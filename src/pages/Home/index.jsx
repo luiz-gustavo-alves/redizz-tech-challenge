@@ -35,8 +35,8 @@ export default function Home() {
         <Content $coords={coords} />
       }
       <ButtonContainer>
-        <Button onClick={handleUndoCircle}>Desfazer</Button>
-        <Button onClick={handleShowCircle}>Refazer</Button>
+        <Button className="undoBtn" onClick={handleUndoCircle}>Desfazer</Button>
+        <Button className="redoBtn" onClick={handleShowCircle}>Refazer</Button>
       </ButtonContainer>
     </Wrapper>
   )
