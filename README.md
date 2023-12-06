@@ -1,8 +1,13 @@
-# React + Vite
+# Redizz Tech Challenge
+Repositório para o desafio técnico para processo seletivo de Desenvolvedor Junior na Redizz.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Instruções para executar o projeto
+- Clone este repositório com o comando: `git clone https://github.com/luiz-gustavo-alves/redizz-tech-challenge.git` ou faça o download manual dos arquivos do projeto.
+- Instale as dependências do projeto com o comando: `npm install`.
+- Execute o comando: `npm run dev` para inicializar o servidor em modo de desenvolvimento.
 
-Currently, two official plugins are available:
+## Links 💻
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+| Descrição | Link |
+| --- | --- |
+| Deploy | https://redizz-tech-challenge.vercel.app/
