@@ -1,42 +1,48 @@
-import { useState } from "react";
-import { Wrapper, Content, ButtonContainer, Button } from "./style";
+import { useEffect, useState } from "react";
+import { Wrapper, ButtonContainer, Button } from "./style";
+import { Circle } from "../../components";
 
 export default function Home() {
-  const [coords, setCoords] = useState(null);
-  const [disableClick, setDisableClick] = useState(false);
+  const [circleList, setCircleList] = useState([]);
+  const [deletedCircles, setDeletedCircles] = useState([]);
+  const listLength = circleList.length;
+  const deletedListLength = deletedCircles.length;
 
   const getScreenCoords = (e) => {
     e.preventDefault();
-    if (!disableClick) {
-      const x = e.clientX;
-      const y = e.clientY;
-      setCoords({ x, y });
-    }
+    const x = e.clientX;
+    const y = e.clientY;
+    const newCircle = [{ x, y }];
+    setCircleList([...circleList, newCircle]);
   };
 
   const handleUndoCircle = (e) => {
     e.stopPropagation();
-    if (coords != null) {
-      setDisableClick(true);
+    if (listLength > 0) {
+      setDeletedCircles([...deletedCircles, ...circleList.slice(-1)]);
+      circleList.pop();
+      setCircleList([...circleList]);
     }
   }
 
-  const handleShowCircle = (e) => {
+  const handleRedoCircle = (e) => {
     e.stopPropagation();
-    if (coords != null) {
-      setDisableClick(false);
+    if (deletedListLength > 0) {
+      setCircleList([...circleList, ...deletedCircles.slice(-1)]);
+      deletedCircles.pop();
+      setDeletedCircles([...deletedCircles]);
     }
   }
 
-  const showCircle = (coords != null && !disableClick);
   return (
     <Wrapper onClick={getScreenCoords}>
-      {showCircle &&
-        <Content $coords={coords} />
+      {circleList.map((coords, index) => (
+          <Circle coords={coords} key={index} />
+        ))
       }
       <ButtonContainer>
         <Button className="undoBtn" onClick={handleUndoCircle}>Desfazer</Button>
-        <Button className="redoBtn" onClick={handleShowCircle}>Refazer</Button>
+        <Button className="redoBtn" onClick={handleRedoCircle}>Refazer</Button>
       </ButtonContainer>
     </Wrapper>
   )
